@@ -1,0 +1,1193 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="component_event" id="jkh_dKBK()kIuMIb]gry" x="0" y="0">
+    <mutation component_type="Pedometer" instance_name="Pedometer1" event_name="WalkStep" />
+    <field name="COMPONENT_SELECTOR">Pedometer1</field>
+    <statement name="DO">
+      <block type="component_set_get" id="(@Srr/JMg:p.lRQ.|fm+">
+        <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="StepCount" />
+        <field name="COMPONENT_SELECTOR">StepCount</field>
+        <field name="PROP">Text</field>
+        <value name="VALUE">
+          <block type="lexical_variable_get" id="(0X_o9IaO5%nrszlw[9!">
+            <mutation>
+              <eventparam name="walkSteps" />
+            </mutation>
+            <field name="VAR">WalkingSteps</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="91" x="0" y="117">
+    <mutation component_type="Form" instance_name="Screen1" event_name="Initialize" />
+    <field name="COMPONENT_SELECTOR">Screen1</field>
+    <statement name="DO">
+      <block type="component_method" id="UsHA;KwD,jmMI1V`:=nO">
+        <mutation component_type="Notifier" method_name="ShowMessageDialog" is_generic="false" instance_name="Notifier1" />
+        <field name="COMPONENT_SELECTOR">Notifier1</field>
+        <value name="ARG0">
+          <block type="text" id="(.Tay)m8!,+HCLgLujyn">
+            <field name="TEXT">Calls and SMS require a SIM card and the relevant device permissions.</field>
+          </block>
+        </value>
+        <value name="ARG1">
+          <block type="text" id="k:Y)2%@{#pA9~8e68=v)">
+            <field name="TEXT">Original target: Funtouch OS, Android 8.1.0, with GPS.</field>
+          </block>
+        </value>
+        <value name="ARG2">
+          <block type="text" id="znGbO@yij,gZhZ=C?DP+">
+            <field name="TEXT">OK</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_method" id="j;x%nh$Ai{X?nkH)69;K">
+            <mutation component_type="Notifier" method_name="ShowMessageDialog" is_generic="false" instance_name="Notifier1" />
+            <field name="COMPONENT_SELECTOR">Notifier1</field>
+            <value name="ARG0">
+              <block type="text" id="~8~@aFGV]hMrfLhyO0,-">
+                <field name="TEXT">Enter a radius before GPS acquires a signal. The default is 1000 meters.</field>
+              </block>
+            </value>
+            <value name="ARG1">
+              <block type="text" id="3$P`]X1Lkhgd}o1tUv/7">
+                <field name="TEXT">On first use, restart the app after GPS shows a signal.</field>
+              </block>
+            </value>
+            <value name="ARG2">
+              <block type="text" id="t=!?dzn,F5m83:|O[d_F">
+                <field name="TEXT">OK</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_set_get" id="85" inline="false">
+                <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="SavedLongitudeValue" />
+                <field name="COMPONENT_SELECTOR">SavedLongitudeValue</field>
+                <field name="PROP">Text</field>
+                <value name="VALUE">
+                  <block type="lexical_variable_get" id="86">
+                    <field name="VAR">global Longitude</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="component_set_get" id="87" inline="false">
+                    <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="SavedLatitudeValue" />
+                    <field name="COMPONENT_SELECTOR">SavedLatitudeValue</field>
+                    <field name="PROP">Text</field>
+                    <value name="VALUE">
+                      <block type="lexical_variable_get" id="88">
+                        <field name="VAR">global Latitude</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="component_set_get" id="-mhHO9s_Gk{E!etMkE?Z">
+                        <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="Status" />
+                        <field name="COMPONENT_SELECTOR">Status</field>
+                        <field name="PROP">Text</field>
+                        <value name="VALUE">
+                          <block type="text" id="bc)b~Y?~S@Q*XeKdHwG)">
+                            <field name="TEXT">No signal</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="component_method" id="0J}AW1VhUajoZoft1!~|">
+                            <mutation component_type="Pedometer" method_name="Start" is_generic="false" instance_name="Pedometer1" />
+                            <field name="COMPONENT_SELECTOR">Pedometer1</field>
+                            <next>
+                              <block type="component_set_get" id="92" inline="false">
+                                <mutation component_type="TextBox" set_or_get="set" property_name="NumbersOnly" is_generic="false" instance_name="RadiusInput" />
+                                <field name="COMPONENT_SELECTOR">RadiusInput</field>
+                                <field name="PROP">NumbersOnly</field>
+                                <value name="VALUE">
+                                  <block type="logic_boolean" id="93">
+                                    <field name="BOOL">TRUE</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="component_set_get" id="94" inline="false">
+                                    <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="SavedLongitudeValue" />
+                                    <field name="COMPONENT_SELECTOR">SavedLongitudeValue</field>
+                                    <field name="PROP">Text</field>
+                                    <value name="VALUE">
+                                      <block type="component_method" id="95" inline="false">
+                                        <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="SettingsDB" />
+                                        <field name="COMPONENT_SELECTOR">SettingsDB</field>
+                                        <value name="ARG0">
+                                          <block type="text" id="96">
+                                            <field name="TEXT">Longitude</field>
+                                          </block>
+                                        </value>
+                                        <value name="ARG1">
+                                          <block type="text" id="97">
+                                            <field name="TEXT" />
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="component_set_get" id="98" inline="false">
+                                        <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="SavedLatitudeValue" />
+                                        <field name="COMPONENT_SELECTOR">SavedLatitudeValue</field>
+                                        <field name="PROP">Text</field>
+                                        <value name="VALUE">
+                                          <block type="component_method" id="99" inline="false">
+                                            <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="SettingsDB" />
+                                            <field name="COMPONENT_SELECTOR">SettingsDB</field>
+                                            <value name="ARG0">
+                                              <block type="text" id="100">
+                                                <field name="TEXT">Latitude</field>
+                                              </block>
+                                            </value>
+                                            <value name="ARG1">
+                                              <block type="text" id="101">
+                                                <field name="TEXT" />
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="local_declaration_statement" id="102" inline="false">
+                                            <mutation>
+                                              <localname name="Setting1" />
+                                            </mutation>
+                                            <field name="VAR0">Setting1</field>
+                                            <value name="DECL0">
+                                              <block type="component_method" id="103" inline="false">
+                                                <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="SettingsDB" />
+                                                <field name="COMPONENT_SELECTOR">SettingsDB</field>
+                                                <value name="ARG0">
+                                                  <block type="text" id="104">
+                                                    <field name="TEXT">Radius</field>
+                                                  </block>
+                                                </value>
+                                                <value name="ARG1">
+                                                  <block type="text" id="105">
+                                                    <field name="TEXT">1000</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <statement name="STACK">
+                                              <block type="component_set_get" id="106" inline="false">
+                                                <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="SavedRadiusValue" />
+                                                <field name="COMPONENT_SELECTOR">SavedRadiusValue</field>
+                                                <field name="PROP">Text</field>
+                                                <value name="VALUE">
+                                                  <block type="lexical_variable_get" id="107">
+                                                    <field name="VAR">Setting1</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </statement>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="global_declaration" id="54" inline="false" x="0" y="789">
+    <field name="NAME">Longitude</field>
+    <value name="VALUE">
+      <block type="math_number" id="55">
+        <field name="NUM">0</field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="59" inline="false" x="0" y="842">
+    <field name="NAME">Latitude</field>
+    <value name="VALUE">
+      <block type="math_number" id="60">
+        <field name="NUM">0</field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="61" inline="false" x="0" y="895">
+    <field name="NAME">LongitudeThreshold</field>
+    <value name="VALUE">
+      <block type="math_number" id="62">
+        <field name="NUM">0</field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="63" inline="false" x="0" y="948">
+    <field name="NAME">LatitudeThreshold</field>
+    <value name="VALUE">
+      <block type="math_number" id="64">
+        <field name="NUM">0</field>
+      </block>
+    </value>
+  </block>
+  <block type="component_event" id="1" x="0" y="1001">
+    <mutation component_type="LocationSensor" instance_name="LocationSensor1" event_name="LocationChanged" />
+    <field name="COMPONENT_SELECTOR">LocationSensor1</field>
+    <statement name="DO">
+      <block type="lexical_variable_set" id="t+QT!j:B?K42Bj0=GK)C">
+        <field name="VAR">global Longitude</field>
+        <value name="VALUE">
+          <block type="lexical_variable_get" id="%x0}VgztLQi|}YUvq8?9">
+            <mutation>
+              <eventparam name="longitude" />
+            </mutation>
+            <field name="VAR">Longitude</field>
+          </block>
+        </value>
+        <next>
+          <block type="lexical_variable_set" id="=.^8XqUp_YG:!CPym6Su">
+            <field name="VAR">global Latitude</field>
+            <value name="VALUE">
+              <block type="lexical_variable_get" id="}Y||#5p^kYaIWB0vgvC4">
+                <mutation>
+                  <eventparam name="latitude" />
+                </mutation>
+                <field name="VAR">Latitude</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="QL30eFQkYE#vC0g}zZM,">
+                <mutation else="1" />
+                <value name="IF0">
+                  <block type="logic_operation" id="%:l4T/x;2n`z%@pb|?YK">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="math_compare" id="p8WG07xre{y2qW~#aiEO">
+                        <field name="OP">NEQ</field>
+                        <value name="A">
+                          <block type="math_number" id="Y(X$EOW)#DT5lg7tZ$Xr">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="component_method" id="+]+s8;lB}DzIn7qPG9!+">
+                            <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="SettingsDB" />
+                            <field name="COMPONENT_SELECTOR">SettingsDB</field>
+                            <value name="ARG0">
+                              <block type="text" id="f@PMm!w)et/JDAGsz3mZ">
+                                <field name="TEXT">Longitude</field>
+                              </block>
+                            </value>
+                            <value name="ARG1">
+                              <block type="text" id="Pf!c0,cXZ,JRC^z!58Ad">
+                                <field name="TEXT">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_compare" id="[H1,Bd+3Km99Pn+40b20">
+                        <field name="OP">NEQ</field>
+                        <value name="A">
+                          <block type="math_number" id="L~(K)w!dbDki!G=7rsCk">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="component_method" id="8$6(1O!@|t3Yf:#?A+J+">
+                            <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="SettingsDB" />
+                            <field name="COMPONENT_SELECTOR">SettingsDB</field>
+                            <value name="ARG0">
+                              <block type="text" id="3z|:u1T/yuC}-HHqc4SA">
+                                <field name="TEXT">Latitude</field>
+                              </block>
+                            </value>
+                            <value name="ARG1">
+                              <block type="text" id="r.3l]OVSrXFf5dya3[K(">
+                                <field name="TEXT">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="lexical_variable_set" id="2" inline="false">
+                    <field name="VAR">global Longitude</field>
+                    <value name="VALUE">
+                      <block type="lexical_variable_get" id="3">
+                        <mutation>
+                          <eventparam name="longitude" />
+                        </mutation>
+                        <field name="VAR">Longitude</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="lexical_variable_set" id="4" inline="false">
+                        <field name="VAR">global Latitude</field>
+                        <value name="VALUE">
+                          <block type="lexical_variable_get" id="5">
+                            <mutation>
+                              <eventparam name="latitude" />
+                            </mutation>
+                            <field name="VAR">Latitude</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="component_set_get" id="6" inline="false">
+                            <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="LongitudeValue" />
+                            <field name="COMPONENT_SELECTOR">LongitudeValue</field>
+                            <field name="PROP">Text</field>
+                            <value name="VALUE">
+                              <block type="lexical_variable_get" id="7">
+                                <mutation>
+                                  <eventparam name="longitude" />
+                                </mutation>
+                                <field name="VAR">Longitude</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="component_set_get" id="8" inline="false">
+                                <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="LatitudeValue" />
+                                <field name="COMPONENT_SELECTOR">LatitudeValue</field>
+                                <field name="PROP">Text</field>
+                                <value name="VALUE">
+                                  <block type="lexical_variable_get" id="9">
+                                    <mutation>
+                                      <eventparam name="latitude" />
+                                    </mutation>
+                                    <field name="VAR">Latitude</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="component_set_get" id="10" inline="false">
+                                    <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="AltitudeValue" />
+                                    <field name="COMPONENT_SELECTOR">AltitudeValue</field>
+                                    <field name="PROP">Text</field>
+                                    <value name="VALUE">
+                                      <block type="lexical_variable_get" id="11">
+                                        <mutation>
+                                          <eventparam name="altitude" />
+                                        </mutation>
+                                        <field name="VAR">Altitude</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="component_set_get" id="12" inline="false">
+                                        <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="SpeedValue" />
+                                        <field name="COMPONENT_SELECTOR">SpeedValue</field>
+                                        <field name="PROP">Text</field>
+                                        <value name="VALUE">
+                                          <block type="lexical_variable_get" id="13">
+                                            <mutation>
+                                              <eventparam name="speed" />
+                                            </mutation>
+                                            <field name="VAR">Speed</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="local_declaration_statement" id="14" inline="false">
+                                            <mutation>
+                                              <localname name="LongitudeData" />
+                                            </mutation>
+                                            <field name="VAR0">LongitudeData</field>
+                                            <value name="DECL0">
+                                              <block type="component_method" id="15" inline="false">
+                                                <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="SettingsDB" />
+                                                <field name="COMPONENT_SELECTOR">SettingsDB</field>
+                                                <value name="ARG0">
+                                                  <block type="text" id="16">
+                                                    <field name="TEXT">Longitude</field>
+                                                  </block>
+                                                </value>
+                                                <value name="ARG1">
+                                                  <block type="text" id="17">
+                                                    <field name="TEXT" />
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <statement name="STACK">
+                                              <block type="local_declaration_statement" id="18" inline="false">
+                                                <mutation>
+                                                  <localname name="LatitudeData" />
+                                                </mutation>
+                                                <field name="VAR0">LatitudeData</field>
+                                                <value name="DECL0">
+                                                  <block type="component_method" id="19" inline="false">
+                                                    <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="SettingsDB" />
+                                                    <field name="COMPONENT_SELECTOR">SettingsDB</field>
+                                                    <value name="ARG0">
+                                                      <block type="text" id="20">
+                                                        <field name="TEXT">Latitude</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ARG1">
+                                                      <block type="text" id="21">
+                                                        <field name="TEXT" />
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <statement name="STACK">
+                                                  <block type="local_declaration_statement" id="22" inline="false">
+                                                    <mutation>
+                                                      <localname name="SavedSettings" />
+                                                    </mutation>
+                                                    <field name="VAR0">SavedSettings</field>
+                                                    <value name="DECL0">
+                                                      <block type="component_method" id="23" inline="false">
+                                                        <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="SettingsDB" />
+                                                        <field name="COMPONENT_SELECTOR">SettingsDB</field>
+                                                        <value name="ARG0">
+                                                          <block type="text" id="24">
+                                                            <field name="TEXT">Radius</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ARG1">
+                                                          <block type="text" id="25">
+                                                            <field name="TEXT" />
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <statement name="STACK">
+                                                      <block type="lexical_variable_set" id="26" inline="false">
+                                                        <field name="VAR">global LongitudeThreshold</field>
+                                                        <value name="VALUE">
+                                                          <block type="math_division" id="27">
+                                                            <value name="A">
+                                                              <block type="math_division" id="28">
+                                                                <value name="A">
+                                                                  <block type="lexical_variable_get" id="29">
+                                                                    <field name="VAR">SavedSettings</field>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="B">
+                                                                  <block type="math_number" id="30">
+                                                                    <field name="NUM">23</field>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                            <value name="B">
+                                                              <block type="math_number" id="31">
+                                                                <field name="NUM">3600</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="lexical_variable_set" id="32" inline="false">
+                                                            <field name="VAR">global LatitudeThreshold</field>
+                                                            <value name="VALUE">
+                                                              <block type="math_division" id="33">
+                                                                <value name="A">
+                                                                  <block type="math_division" id="34">
+                                                                    <value name="A">
+                                                                      <block type="lexical_variable_get" id="35">
+                                                                        <field name="VAR">SavedSettings</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="B">
+                                                                      <block type="math_number" id="36">
+                                                                        <field name="NUM">33</field>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="B">
+                                                                  <block type="math_number" id="37">
+                                                                    <field name="NUM">3600</field>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="controls_if" id="38" inline="false">
+                                                                <value name="IF0">
+                                                                  <block type="logic_or" id="39">
+                                                                    <field name="OP">OR</field>
+                                                                    <value name="A">
+                                                                      <block type="math_compare" id="40">
+                                                                        <field name="OP">LT</field>
+                                                                        <value name="A">
+                                                                          <block type="lexical_variable_get" id="41">
+                                                                            <field name="VAR">global LongitudeThreshold</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="B">
+                                                                          <block type="math_abs" id="42" inline="false">
+                                                                            <field name="OP">ABS</field>
+                                                                            <value name="NUM">
+                                                                              <block type="math_subtract" id="43">
+                                                                                <value name="A">
+                                                                                  <block type="lexical_variable_get" id="44">
+                                                                                    <field name="VAR">global Longitude</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <value name="B">
+                                                                                  <block type="lexical_variable_get" id="45">
+                                                                                    <field name="VAR">LongitudeData</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="B">
+                                                                      <block type="math_compare" id="46">
+                                                                        <field name="OP">LT</field>
+                                                                        <value name="A">
+                                                                          <block type="lexical_variable_get" id="47">
+                                                                            <field name="VAR">global LatitudeThreshold</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="B">
+                                                                          <block type="math_abs" id="48" inline="false">
+                                                                            <field name="OP">ABS</field>
+                                                                            <value name="NUM">
+                                                                              <block type="math_subtract" id="49">
+                                                                                <value name="A">
+                                                                                  <block type="lexical_variable_get" id="50">
+                                                                                    <field name="VAR">global Latitude</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <value name="B">
+                                                                                  <block type="lexical_variable_get" id="51">
+                                                                                    <field name="VAR">LatitudeData</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                                <statement name="DO0">
+                                                                  <block type="component_set_get" id="52" inline="false">
+                                                                    <mutation component_type="Clock" set_or_get="set" property_name="TimerEnabled" is_generic="false" instance_name="Clock1" />
+                                                                    <field name="COMPONENT_SELECTOR">Clock1</field>
+                                                                    <field name="PROP">TimerEnabled</field>
+                                                                    <value name="VALUE">
+                                                                      <block type="logic_boolean" id="53">
+                                                                        <field name="BOOL">TRUE</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <next>
+                                                                      <block type="component_set_get" id="-tx_*rXjZp9DdcbGl%a;">
+                                                                        <mutation component_type="Clock" set_or_get="set" property_name="TimerEnabled" is_generic="false" instance_name="Clock3" />
+                                                                        <field name="COMPONENT_SELECTOR">Clock3</field>
+                                                                        <field name="PROP">TimerEnabled</field>
+                                                                        <value name="VALUE">
+                                                                          <block type="logic_boolean" id="(%GmNboM2S9?K^%s8|+*">
+                                                                            <field name="BOOL">TRUE</field>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </next>
+                                                                  </block>
+                                                                </statement>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </statement>
+                                                  </block>
+                                                </statement>
+                                              </block>
+                                            </statement>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="component_method" id="{DdDtPI~qchlEyW{|L(T">
+                    <mutation component_type="Notifier" method_name="ShowAlert" is_generic="false" instance_name="Notifier1" />
+                    <field name="COMPONENT_SELECTOR">Notifier1</field>
+                    <value name="ARG0">
+                      <block type="text" id="]iEtV=OvFm=9lO@Ko(gt">
+                        <field name="TEXT">GPS signal available. Use a radius of at least 10 meters.</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="zzcn3=QNTJl=nO-+!=[5" x="0" y="1967">
+    <mutation component_type="Clock" instance_name="Clock3" event_name="Timer" />
+    <field name="COMPONENT_SELECTOR">Clock3</field>
+    <statement name="DO">
+      <block type="component_set_get" id="#Dy_PxwozYo2m_O0S(wo">
+        <mutation component_type="PhoneCall" set_or_get="set" property_name="PhoneNumber" is_generic="false" instance_name="PhoneCall1" />
+        <field name="COMPONENT_SELECTOR">PhoneCall1</field>
+        <field name="PROP">PhoneNumber</field>
+        <value name="VALUE">
+          <block type="component_method" id="G5|H~80F4W:!d%pv/p1F">
+            <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="PhoneDB" />
+            <field name="COMPONENT_SELECTOR">PhoneDB</field>
+            <value name="ARG0">
+              <block type="math_number" id="R.:Kw85oC]xQ[*L2kb?b">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <value name="ARG1">
+              <block type="text" id="*{1K;YqZZq-CDU0ycd)+">
+                <field name="TEXT" />
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="component_method" id="EU]!Cj-9qU*L{VAwKcg1">
+            <mutation component_type="PhoneCall" method_name="MakePhoneCall" is_generic="false" instance_name="PhoneCall1" />
+            <field name="COMPONENT_SELECTOR">PhoneCall1</field>
+            <next>
+              <block type="component_set_get" id="Q~Wh^o(~l2b68?y82_N1" inline="false">
+                <mutation component_type="Texting" set_or_get="set" property_name="Message" is_generic="false" instance_name="Texting1" />
+                <field name="COMPONENT_SELECTOR">Texting1</field>
+                <field name="PROP">Message</field>
+                <value name="VALUE">
+                  <block type="text_join" id="`$6.i|btE#jb$3m=tnl[" inline="false">
+                    <mutation items="4" />
+                    <value name="ADD0">
+                      <block type="text" id="0Gc]dOq3Jo..+Fv5cEk*">
+                        <field name="TEXT">  </field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="lexical_variable_get" id="mm|Ia8iR{uOH:.w]6[M8">
+                        <field name="VAR">global Longitude</field>
+                      </block>
+                    </value>
+                    <value name="ADD2">
+                      <block type="text" id="RsjN`ZNm+|)v=H2,4ak9">
+                        <field name="TEXT">  </field>
+                      </block>
+                    </value>
+                    <value name="ADD3">
+                      <block type="lexical_variable_get" id="y_I%6V_CqTm|)=G!`1Uq">
+                        <field name="VAR">global Latitude</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="component_method" id="FlN?fXtL4csieEK|6:dB">
+                    <mutation component_type="Texting" method_name="SendMessage" is_generic="false" instance_name="Texting1" />
+                    <field name="COMPONENT_SELECTOR">Texting1</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="65" x="0" y="2266">
+    <mutation component_type="LocationSensor" instance_name="LocationSensor1" event_name="StatusChanged" />
+    <field name="COMPONENT_SELECTOR">LocationSensor1</field>
+    <statement name="DO">
+      <block type="lexical_variable_set" id="66" inline="false">
+        <mutation>
+          <eventparam name="status" />
+        </mutation>
+        <field name="VAR">Status</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="67">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id="]~JMJHf4/un,H97Nv#0@">
+            <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="Status" />
+            <field name="COMPONENT_SELECTOR">Status</field>
+            <field name="PROP">Text</field>
+            <value name="VALUE">
+              <block type="text" id="Ot9Y?NN!A_]{{GSt}}Tg">
+                <field name="TEXT">Signal available</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="giNenAN/[+~ohVZ3$SCs" x="0" y="2409">
+    <mutation component_type="Button" instance_name="EmergencyCall" event_name="Click" />
+    <field name="COMPONENT_SELECTOR">EmergencyCall</field>
+    <statement name="DO">
+      <block type="component_set_get" id="V]wZr5(L2XR+j~XLA9rD">
+        <mutation component_type="PhoneCall" set_or_get="set" property_name="PhoneNumber" is_generic="false" instance_name="PhoneCall1" />
+        <field name="COMPONENT_SELECTOR">PhoneCall1</field>
+        <field name="PROP">PhoneNumber</field>
+        <value name="VALUE">
+          <block type="component_method" id="4Be.v4^G|spd`-QHJ(_%">
+            <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="PhoneDB" />
+            <field name="COMPONENT_SELECTOR">PhoneDB</field>
+            <value name="ARG0">
+              <block type="math_number" id="[nm-IfsFv{}ZDv7/w?6+">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <value name="ARG1">
+              <block type="text" id="TQ:;o=MRG@TSM^/Sg!:1">
+                <field name="TEXT" />
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="component_method" id="136">
+            <mutation component_type="PhoneCall" method_name="MakePhoneCall" is_generic="false" instance_name="PhoneCall1" />
+            <field name="COMPONENT_SELECTOR">PhoneCall1</field>
+            <next>
+              <block type="component_set_get" id="}It05*R-vBzH1X;NC.rj">
+                <mutation component_type="Texting" set_or_get="set" property_name="PhoneNumber" is_generic="false" instance_name="Texting1" />
+                <field name="COMPONENT_SELECTOR">Texting1</field>
+                <field name="PROP">PhoneNumber</field>
+                <value name="VALUE">
+                  <block type="component_method" id="[!CO=GjQoQnw-N=l(mqk">
+                    <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="PhoneDB" />
+                    <field name="COMPONENT_SELECTOR">PhoneDB</field>
+                    <value name="ARG0">
+                      <block type="math_number" id="MSA5~4lR,%Na;WwDWOTF">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <value name="ARG1">
+                      <block type="text" id="q8Pljt9uM{E1ZcafeWRt">
+                        <field name="TEXT" />
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="component_set_get" id="138" inline="false">
+                    <mutation component_type="Texting" set_or_get="set" property_name="Message" is_generic="false" instance_name="Texting1" />
+                    <field name="COMPONENT_SELECTOR">Texting1</field>
+                    <field name="PROP">Message</field>
+                    <value name="VALUE">
+                      <block type="text_join" id="139" inline="false">
+                        <mutation items="4" />
+                        <value name="ADD0">
+                          <block type="text" id="140">
+                            <field name="TEXT" />
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="lexical_variable_get" id="141">
+                            <field name="VAR">global Longitude</field>
+                          </block>
+                        </value>
+                        <value name="ADD2">
+                          <block type="text" id="142">
+                            <field name="TEXT" />
+                          </block>
+                        </value>
+                        <value name="ADD3">
+                          <block type="lexical_variable_get" id="143">
+                            <field name="VAR">global Latitude</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="component_method" id="137">
+                        <mutation component_type="Texting" method_name="SendMessage" is_generic="false" instance_name="Texting1" />
+                        <field name="COMPONENT_SELECTOR">Texting1</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="128" x="0" y="2785">
+    <mutation component_type="OrientationSensor" instance_name="OrientationSensor1" event_name="OrientationChanged" />
+    <field name="COMPONENT_SELECTOR">OrientationSensor1</field>
+    <statement name="DO">
+      <block type="component_set_get" id="129" inline="false">
+        <mutation component_type="ImageSprite" set_or_get="set" property_name="Heading" is_generic="false" instance_name="CompassSprite" />
+        <field name="COMPONENT_SELECTOR">CompassSprite</field>
+        <field name="PROP">Heading</field>
+        <value name="VALUE">
+          <block type="component_set_get" id="130">
+            <mutation component_type="OrientationSensor" set_or_get="get" property_name="Azimuth" is_generic="false" instance_name="OrientationSensor1" />
+            <field name="COMPONENT_SELECTOR">OrientationSensor1</field>
+            <field name="PROP">Azimuth</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id="131" inline="false">
+            <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="CurrentAngle" />
+            <field name="COMPONENT_SELECTOR">CurrentAngle</field>
+            <field name="PROP">Text</field>
+            <value name="VALUE">
+              <block type="component_set_get" id="132">
+                <mutation component_type="OrientationSensor" set_or_get="get" property_name="Azimuth" is_generic="false" instance_name="OrientationSensor1" />
+                <field name="COMPONENT_SELECTOR">OrientationSensor1</field>
+                <field name="PROP">Azimuth</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="?A)0q5n]xc1KT?JLrM{P" x="0" y="2928">
+    <mutation component_type="Button" instance_name="SavePhone" event_name="Click" />
+    <field name="COMPONENT_SELECTOR">SavePhone</field>
+    <statement name="DO">
+      <block type="component_method" id="MTA*`-84hOWBUo#irVzl">
+        <mutation component_type="Notifier" method_name="ShowAlert" is_generic="false" instance_name="Notifier1" />
+        <field name="COMPONENT_SELECTOR">Notifier1</field>
+        <value name="ARG0">
+          <block type="text" id="=V,MxTN{beGT/o02ck3?">
+            <field name="TEXT">Long press to change</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="8e3sn3J5^WW}KJ7](#HC" x="0" y="3045">
+    <mutation component_type="Button" instance_name="SavePhone" event_name="LongClick" />
+    <field name="COMPONENT_SELECTOR">SavePhone</field>
+    <statement name="DO">
+      <block type="component_method" id="ByBgIWL3VzgGT{I(uSKh">
+        <mutation component_type="TinyDB" method_name="StoreValue" is_generic="false" instance_name="PhoneDB" />
+        <field name="COMPONENT_SELECTOR">PhoneDB</field>
+        <value name="ARG0">
+          <block type="math_number" id="KvsB+l;6e8twnh:v|kM.">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="ARG1">
+          <block type="component_set_get" id="hx3D@^PP2BUGr%1|!E(`">
+            <mutation component_type="TextBox" set_or_get="get" property_name="Text" is_generic="false" instance_name="PhoneInput" />
+            <field name="COMPONENT_SELECTOR">PhoneInput</field>
+            <field name="PROP">Text</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_method" id="6Z5jwkxRtSx]ZVr)d2Kn">
+            <mutation component_type="Notifier" method_name="ShowAlert" is_generic="false" instance_name="Notifier1" />
+            <field name="COMPONENT_SELECTOR">Notifier1</field>
+            <value name="ARG0">
+              <block type="text" id="|TlBt5(op1P6pE~.aP=f">
+                <field name="TEXT">Updated successfully</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_set_get" id="=A`MrnB;d0]kpI$L:mzA">
+                <mutation component_type="TextBox" set_or_get="set" property_name="Text" is_generic="false" instance_name="PhoneInput" />
+                <field name="COMPONENT_SELECTOR">PhoneInput</field>
+                <field name="PROP">Text</field>
+                <value name="VALUE">
+                  <block type="text" id="$Ph/p]ET|]QlpY8ag(UC">
+                    <field name="TEXT" />
+                  </block>
+                </value>
+                <next>
+                  <block type="component_set_get" id="mT;o47]SG+iIn}EMQduS">
+                    <mutation component_type="TextBox" set_or_get="set" property_name="Hint" is_generic="false" instance_name="PhoneInput" />
+                    <field name="COMPONENT_SELECTOR">PhoneInput</field>
+                    <field name="PROP">Hint</field>
+                    <value name="VALUE">
+                      <block type="text" id="BybaJeupfZ?6zQ.`:k,3">
+                        <field name="TEXT">Only one change is allowed.</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="component_set_get" id="t+h_E0j|,#`=ur+P3{wA">
+                        <mutation component_type="TextBox" set_or_get="set" property_name="Enabled" is_generic="false" instance_name="PhoneInput" />
+                        <field name="COMPONENT_SELECTOR">PhoneInput</field>
+                        <field name="PROP">Enabled</field>
+                        <value name="VALUE">
+                          <block type="logic_false" id="pq!ZQ:5$V;_lP.;d;@8w">
+                            <field name="BOOL">FALSE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="56" x="0" y="3317">
+    <mutation component_type="TextBox" instance_name="RadiusInput" event_name="GotFocus" />
+    <field name="COMPONENT_SELECTOR">RadiusInput</field>
+    <statement name="DO">
+      <block type="component_set_get" id="57" inline="false">
+        <mutation component_type="TextBox" set_or_get="set" property_name="Text" is_generic="false" instance_name="RadiusInput" />
+        <field name="COMPONENT_SELECTOR">RadiusInput</field>
+        <field name="PROP">Text</field>
+        <value name="VALUE">
+          <block type="text" id="58">
+            <field name="TEXT" />
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="S[}!Nnw/)D-t%MIJy?E!" x="0" y="3409">
+    <mutation component_type="Clock" instance_name="Clock1" event_name="Timer" />
+    <field name="COMPONENT_SELECTOR">Clock1</field>
+    <statement name="DO">
+      <block type="component_method" id="134" inline="false">
+        <mutation component_type="Player" method_name="Vibrate" is_generic="false" instance_name="Player1" />
+        <field name="COMPONENT_SELECTOR">Player1</field>
+        <value name="ARG0">
+          <block type="math_number" id="135">
+            <field name="NUM">5000</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="e=1[?_I;e,9hRk-FZqbY" x="0" y="3526">
+    <mutation component_type="Clock" instance_name="Clock2" event_name="Timer" />
+    <field name="COMPONENT_SELECTOR">Clock2</field>
+    <statement name="DO">
+      <block type="component_method" id="77" inline="false">
+        <mutation component_type="TinyDB" method_name="StoreValue" is_generic="false" instance_name="SettingsDB" />
+        <field name="COMPONENT_SELECTOR">SettingsDB</field>
+        <value name="ARG0">
+          <block type="text" id="78">
+            <field name="TEXT">Longitude</field>
+          </block>
+        </value>
+        <value name="ARG1">
+          <block type="lexical_variable_get" id="79">
+            <field name="VAR">global Longitude</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_method" id="80" inline="false">
+            <mutation component_type="TinyDB" method_name="StoreValue" is_generic="false" instance_name="SettingsDB" />
+            <field name="COMPONENT_SELECTOR">SettingsDB</field>
+            <value name="ARG0">
+              <block type="text" id="81">
+                <field name="TEXT">Latitude</field>
+              </block>
+            </value>
+            <value name="ARG1">
+              <block type="lexical_variable_get" id="82">
+                <field name="VAR">global Latitude</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="108" x="0" y="3746">
+    <mutation component_type="Button" instance_name="ApplyRadius" event_name="Click" />
+    <field name="COMPONENT_SELECTOR">ApplyRadius</field>
+    <statement name="DO">
+      <block type="controls_if" id="Yu$`}zl,RZ1x:r#X(kD3">
+        <mutation else="1" />
+        <value name="IF0">
+          <block type="math_compare" id="vFL;OAT$JsrvQ~{%k*ps">
+            <field name="OP">GT</field>
+            <value name="A">
+              <block type="component_set_get" id=")e^=hEq:2R)d*f/z@k=P">
+                <mutation component_type="TextBox" set_or_get="get" property_name="Text" is_generic="false" instance_name="RadiusInput" />
+                <field name="COMPONENT_SELECTOR">RadiusInput</field>
+                <field name="PROP">Text</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="Jx._vc;qs0z}GekIG-U@">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="local_declaration_statement" id="109" inline="false">
+            <mutation>
+              <localname name="Setting2" />
+            </mutation>
+            <field name="VAR0">Setting2</field>
+            <value name="DECL0">
+              <block type="component_set_get" id="110">
+                <mutation component_type="TextBox" set_or_get="get" property_name="Text" is_generic="false" instance_name="RadiusInput" />
+                <field name="COMPONENT_SELECTOR">RadiusInput</field>
+                <field name="PROP">Text</field>
+              </block>
+            </value>
+            <statement name="STACK">
+              <block type="component_method" id="111" inline="false">
+                <mutation component_type="TinyDB" method_name="StoreValue" is_generic="false" instance_name="SettingsDB" />
+                <field name="COMPONENT_SELECTOR">SettingsDB</field>
+                <value name="ARG0">
+                  <block type="text" id="112">
+                    <field name="TEXT">Radius</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="lexical_variable_get" id="113">
+                    <field name="VAR">Setting2</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="lexical_variable_set" id="114" inline="false">
+                    <field name="VAR">global LongitudeThreshold</field>
+                    <value name="VALUE">
+                      <block type="math_division" id="115">
+                        <value name="A">
+                          <block type="math_division" id="116">
+                            <value name="A">
+                              <block type="lexical_variable_get" id="117">
+                                <field name="VAR">Setting2</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="118">
+                                <field name="NUM">23</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="119">
+                            <field name="NUM">3600</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="lexical_variable_set" id="120" inline="false">
+                        <field name="VAR">global LatitudeThreshold</field>
+                        <value name="VALUE">
+                          <block type="math_division" id="121">
+                            <value name="A">
+                              <block type="math_division" id="122">
+                                <value name="A">
+                                  <block type="lexical_variable_get" id="123">
+                                    <field name="VAR">Setting2</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="124">
+                                    <field name="NUM">33</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="125">
+                                <field name="NUM">3600</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="component_set_get" id="126" inline="false">
+                            <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="SavedRadiusValue" />
+                            <field name="COMPONENT_SELECTOR">SavedRadiusValue</field>
+                            <field name="PROP">Text</field>
+                            <value name="VALUE">
+                              <block type="lexical_variable_get" id="127">
+                                <field name="VAR">Setting2</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="component_method" id="aQvLjBy!ErioSecK=D]8">
+            <mutation component_type="Notifier" method_name="ShowAlert" is_generic="false" instance_name="Notifier1" />
+            <field name="COMPONENT_SELECTOR">Notifier1</field>
+            <value name="ARG0">
+              <block type="text" id="axh3HfFINKOT`t5OzLbB">
+                <field name="TEXT">Enter a radius</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <next>
+          <block type="component_set_get" id="v/,OajLBrO0B!yAwi0y.">
+            <mutation component_type="TextBox" set_or_get="set" property_name="Hint" is_generic="false" instance_name="RadiusInput" />
+            <field name="COMPONENT_SELECTOR">RadiusInput</field>
+            <field name="PROP">Hint</field>
+            <value name="VALUE">
+              <block type="text" id="[J9.?$P1~z2?+1$]ho4M">
+                <field name="TEXT">Only one change is allowed.</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_set_get" id="(qPgbrBX*:NvJ}efZ7C5">
+                <mutation component_type="TextBox" set_or_get="set" property_name="Text" is_generic="false" instance_name="RadiusInput" />
+                <field name="COMPONENT_SELECTOR">RadiusInput</field>
+                <field name="PROP">Text</field>
+                <value name="VALUE">
+                  <block type="text" id="=i-wMp.)f)F4x+Z]47Z@">
+                    <field name="TEXT" />
+                  </block>
+                </value>
+                <next>
+                  <block type="component_set_get" id="Lu`iN@p];3kLaQUJvA-2">
+                    <mutation component_type="TextBox" set_or_get="set" property_name="Enabled" is_generic="false" instance_name="RadiusInput" />
+                    <field name="COMPONENT_SELECTOR">RadiusInput</field>
+                    <field name="PROP">Enabled</field>
+                    <value name="VALUE">
+                      <block type="logic_false" id="-/2zAjWeKyhVJW=6x3G(">
+                        <field name="BOOL">FALSE</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <yacodeblocks ya-version="172" language-version="22" />
+</xml>

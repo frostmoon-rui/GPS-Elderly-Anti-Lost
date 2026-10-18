@@ -1,0 +1,27 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.keystore
+*.jks
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+~$*
+*.tmp
+
+# Keep private records and prebuilt artifacts out of the source archive.
+*.apk
+*.docx
+*.pptx
+*.pdf
+*.mp4
+*.backup
+build/
+__pycache__/
+*.py[cod]
