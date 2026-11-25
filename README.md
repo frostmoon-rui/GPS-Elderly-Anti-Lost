@@ -58,3 +58,7 @@ Run the repeatable offline checks with Python 3:
 ```sh
 python -m unittest discover -s tests -q
 ```
+
+## Project notes
+
+- [GPS Location Assistant archive note](https://frostmoonrui.com/en/notes/gps-location-assistant/)
